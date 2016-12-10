@@ -6,7 +6,7 @@ module.exports.Schema = Schema;
 
 // Connect to mongo
 function connect() {
-	var url = process.env.MONGODB_URI || 'mongodb://minhanh:minhanh94@ds029725.mlab.com:29725/thuctap'
+	var url ='mongodb://minhanh:minhanh94@ds029725.mlab.com:29725/thuctap'
 	mongoose.connect(url);
 	console.log('mongoDB_driver - connect success to db');
 }
