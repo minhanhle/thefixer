@@ -1,1 +1,1 @@
-var app = angular.module('fixhomeApp', ['ngMaterial', 'md.data.table', 'ui.router', 'ngCookies', 'ngMaterialDatePicker', 'chart.js', 'googlechart', 'materialCalendar', 'ngSanitize', 'mwl.calendar', 'ui.bootstrap', 'ngAnimate']);
+var app = angular.module('fixhomeApp', ['ngMaterial', 'md.data.table', 'ui.router', 'ngCookies', 'ngMaterialDatePicker', 'Chart.js', 'googlechart', 'materialCalendar', 'ngSanitize', 'mwl.calendar', 'ui.bootstrap', 'ngAnimate']);
