@@ -1,0 +1,101 @@
+<md-dialog aria-label="Danh sánh tìm kiếm" ng-cloak flex="60">
+	<form>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>Thông tin lịch làm việc</h2>
+				<span flex></span>
+				<md-button class="md-icon-button" ng-click="cancel()">
+					<md-icon md-svg-src="images/cancel.svg" aria-label="Close dialog"></md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+		<md-dialog-content>
+			<div class="md-dialog-content" layout="column">
+				<div layout="row">
+					<div flex="30" class="padding-15">
+						<div layout-align="center center" layout="row">
+							<img ng-src="{{nv.hinhanh}}" alt="Cập nhật hình ảnh" height="110px" width="110px">
+						</div>
+						<br>
+						<table class="table table-striped">
+							<tbody>
+								<tr>
+									<td>Họ tên</td>
+									<td>{{nv.hoten}}</td>
+								</tr>
+								<tr>
+									<td>CMND</td>
+									<td>{{nv.cmnd}}</td>
+								</tr>
+								<tr>
+									<td>Ngày sinh</td>
+									<td>{{nv.ngaysinh | date: 'dd/MM/yyyy'}}</td>
+								</tr>
+								<tr>
+									<td>SĐT</td>
+									<td>{{nv.sodt}}</td>
+								</tr>
+								<tr>
+									<td>Email</td>
+									<td>{{nv.email}}</td>
+								</tr>
+								<tr>
+									<td>Địa chỉ</td>
+									<td>{{nv.diachihientai}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div flex="70" class="padding-l15">
+						<div ng-show= "nv.account.quyen === 'tho'">
+							<h3 class="link">YÊU CẦU KHÁCH HÀNG</h3>
+							<div class="draw"></div>
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Họ tên khách hàng</th>
+										<th>Ngày làm</th>
+										<th>Bắt đầu</th>
+										<th>Kết thúc</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="yc in nv.yeucau">
+										<td>{{yc.hotenKH}}</td>
+										<td>{{yc.ngaylam | date: 'dd/MM/yyyy'}}</td>
+										<td>{{yc.giobd | date: 'HH:mm'}}</td>
+										<td>{{yc.giokt | date: 'HH:mm'}}</td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div>
+							<h3 class="link">LỊCH NGHỈ</h3>
+							<div class="draw"></div>
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Ngày nghỉ</th>
+										<th>Bắt đầu</th>
+										<th>Kết thúc</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr  ng-repeat="n in nv.lichnghi">
+										<td>{{n.ngay | date: 'dd/MM/yyyy'}}</td>
+										<td>{{n.giobd | date: 'HH: mm'}}</td>
+										<td>{{n.giokt | date: 'HH: mm'}}</td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</md-dialog-content>
+	</form>
+</md-dialog>

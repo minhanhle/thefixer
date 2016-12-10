@@ -1,0 +1,43 @@
+<!--<md-list flex>
+	<md-content>
+		<md-list-item class="md-3-line" ng-click="vm.select=false; vm.mode('khachhang')" class="item-menu">
+			Thông tin khách hàng
+		</md-list-item>
+		<md-list-item class="md-3-line" ng-click="vm.select=true; vm.mode('khachhang')" class="item-menu">
+			Tài khoản khách hàng
+		</md-list-item>
+	</md-content>
+</md-list>-->
+<div flex="100">
+	<div class="md-toolbar-tools background-tree">
+		<h1>Tìm kiếm</h1>
+		<div flex></div>
+		<md-button class="md-fab md-primary" ng-click="vm.search()" aria-span="Settings">
+			<md-icon md-svg-icon="images/search.svg"></md-icon>
+		</md-button>
+	</div>
+	<md-divider></md-divider>
+	<md-content layout="column" class="viewtree">
+		<md-input-container md-no-float class="md-block" flex-gt-sm>
+			<span>Họ tên khách hàng</span>
+			<input type="text" ng-model="vm.timkiemKH.hoten">
+		</md-input-container>
+
+		<md-input-container md-no-float class="md-block" flex-gt-sm>
+			<span>Số điện thoại</span>
+			<input type="text" ng-model="vm.timkiemKH.taikhoan">
+		</md-input-container>
+		
+		<md-input-container md-no-float class="md-block" flex-gt-sm>
+        	<span>Email</span>
+            <input type="text" ng-model="vm.timkiemKH.email">
+        </md-input-container>
+		
+		<md-input-container md-no-float class="md-block" flex-gt-sm>
+        	<span>Địa chỉ</span>
+            <input type="text" ng-model="vm.timkiemKH.diachi">
+        </md-input-container>
+
+	</md-content>
+</div>
+

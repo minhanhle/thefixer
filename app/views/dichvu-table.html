@@ -1,0 +1,45 @@
+<md-card>
+	<div class="md-toolbar-tools padding-15">
+		<h2>Dịch vụ</h2>
+		<span flex></span>
+		<md-button class="md-fab md-primary md-hue-2" aria-label="New" ng-click="vm.modelNew()">
+			<md-icon md-svg-icon="images/add.svg"></md-icon>
+		</md-button>
+	</div>
+</md-card>
+<md-divider></md-divider>
+<div layout="row" layout-align="space-between" layout-wrap>
+	<!--<md-card flex="70" ng-hide="!vm.select" class="margin a15" ng-repeat="req in vm.services | orderBy: 'trangthai'">-->
+	<md-card flex="45" class="margin a15" md-theme="default" md-theme-watch ng-repeat="ser in vm.services">
+		<md-card-title layout="row">
+			<md-card-title-media>
+				<div class="md-media-lg card-media">
+					<img ng-src="images/suachuacacloai.png">
+				</div>
+			</md-card-title-media>
+			<md-card-title-text layout="column">
+				<span class="md-headline">{{ser.tenDichVu}}</span>
+				<div layout="row" class="padding-l15" class="md-media-sm card-media">
+					<md-button target="_blank" ng-disabled="true" class="md-icon-button">
+						<md-icon class="color-icon" md-svg-icon="images/money.svg"></md-icon>
+					</md-button>
+					<span class="padding-t10">Chi phí: {{ser.phiTheoGio}}</span>
+				</div>
+				<div layout="row" class="padding-l15" class="md-media-sm card-media">
+					<md-button target="_blank" ng-disabled="true" class="md-icon-button">
+						<md-icon md-svg-icon="images/tag.svg"></md-icon>
+					</md-button>
+					<span class="padding-t10">Mô tả: {{ser.mota}}</span>
+				</div>
+				<div layout="row">
+					<div flex></div>
+					<md-button class="md-mini md-raised md-primary" ng-click="vm.capnhatdichvu(ser)">Sửa</md-button>
+					<md-button class="md-mini md-raised md-primary" ng-click="vm.showConfirm($event,ser._id)">Xóa</md-button>
+				</div>
+			</md-card-title-text>
+		</md-card-title>
+	</md-card>
+</div>
+<!--<div layout="row" layout-align="center">
+	<md-button class="md-mini md-raised md-primary" ng-click="vm.update(ser)">Load</md-button>
+</div>-->

@@ -1,0 +1,496 @@
+<div ng-show="vm.select===1">
+	<div class="md-toolbar-tools padding-15 link">
+		<h2>NHÂN VIÊN</h2>
+		<span flex></span>
+		<!--<md-button class="md-fab md-primary md-hue-2" aria-label="New" ng-click="vm.modelNew()">
+       <md-icon md-svg-icon="images/add.svg"></md-icon>
+   </md-button>-->
+		<md-button class="md-raised md-primary" aria-label="New" ng-click="vm.modelNew()">
+			Thêm thợ
+		</md-button>
+		<md-button class="md-raised md-primary" aria-label="New" ng-click="vm.modelNVVPNew()">
+			Thêm NVVP
+		</md-button>
+	</div>
+	<md-divider></md-divider>
+	<div ng-cloak>
+		<md-content>
+			<md-tabs md-dynamic-height md-border-bottom>
+				<md-tab label="Thợ sửa chữa" ng-click="vm.checktab=true">
+					<md-content class="md-padding" layout="column">
+						<div class="col-lg-2">
+							<strong>Tìm kiếm:</strong>
+						</div>
+						<div class="col-lg-10" layout="row">
+							<input type="text" class="form-control" ng-model="vm.timkiemNV" placeholder="Tìm kiếm theo CMND, họ tên khách hàng, số điện thoại,...">
+							<div class="input-group-btn">
+								<button class="btn btn-default" type="submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+						<md-table-container>
+							<table md-table>
+								<thead md-head>
+									<tr md-row>
+										<th md-column md-order-by="cmnd">
+											<span>CMND</span>
+										</th>
+										<th md-column md-order-by="hoten">
+											<span>Họ tên</span>
+										</th>
+										<th md-column md-order-by="sodt">
+											<span>Số điện thoại</span>
+										</th>
+										<!--<th md-column md-order-by="email">
+										<span>Email</span>
+										</th>-->
+										<th md-column md-order-by="sotruong">
+											<span>Sở trường</span>
+										</th>
+										<th md-column></th>
+									</tr>
+								</thead>
+								<tbody md-body>
+									<tr md-row ng-repeat="row in vm.tho | orderBy: cmnd | filter: vm.timkiemNV">
+										<td md-cell>{{row.cmnd}}</td>
+										<td md-cell>{{row.hoten}}</td>
+										<td md-cell>{{row.sodt}}</td>
+										<!--<td md-cell>{{row.email}}</td>-->
+										<td md-cell> {{row.sotruong.toString()}}</td>
+										<!--<td md-cell>{{row.motakinhnghiem}}</td>-->
+										<td md-cell>
+											<md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Profile" ng-click="vm.modelDetail(row.cmnd)">
+												<md-icon md-svg-icon="images/pencil-edit.svg"></md-icon>
+											</md-button>
+											<md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Profile" ng-click="vm.dklichban(row.cmnd)">
+												<md-icon md-svg-icon="images/calendar.svg"></md-icon>
+											</md-button>
+											<md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Profile" ng-click="vm.showConfirm($event, row.cmnd)">
+												<md-icon md-svg-icon="images/delete.svg"></md-icon>
+											</md-button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</md-table-container>
+						<div flex></div>
+						<!--<md-table-pagination md-limit="vm.query.limit" md-limit-options="[5, 10, 15]" md-page="vm.query.page" md-total="{{vm.tho.length}}" md-on-paginate="vm.setPage" md-page-select></md-table-pagination>-->
+					</md-content>
+				</md-tab>
+				<md-tab label="Thợ sửa chữa đăng ký">
+					<md-content class="md-padding" layout="column">
+						<div class="col-lg-2">
+							<strong>Tìm kiếm:</strong>
+						</div>
+						<div class="col-lg-10" layout="row">
+							<input type="text" class="form-control" ng-model="vm.timkiemNVDK" placeholder="Tìm kiếm theo CMND, họ tên khách hàng, số điện thoại,...">
+							<div class="input-group-btn">
+								<button class="btn btn-default" type="submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+						<md-table-container>
+							<table md-table>
+								<thead md-head>
+									<tr md-row>
+										<th md-column md-order-by="cmnd">
+											<span>CMND</span>
+										</th>
+										<th md-column md-order-by="hoten">
+											<span>Họ tên</span>
+										</th>
+										<th md-column md-order-by="sodt">
+											<span>Số điện thoại</span>
+										</th>
+										<!--<th md-column md-order-by="email">
+										<span>Email</span>
+										</th>-->
+										<th md-column md-order-by="sotruong">
+											<span>Sở trường</span>
+										</th>
+										<th md-column></th>
+									</tr>
+								</thead>
+								<tbody md-body>
+									<tr md-row ng-repeat="row in vm.thomoi | orderBy: cmnd | filter: vm.timkiemNVDK">
+										<td md-cell>{{row.cmnd}}</td>
+										<td md-cell>{{row.hoten}}</td>
+										<td md-cell>{{row.sodt}}</td>
+										<!--<td md-cell>{{row.email}}</td>-->
+										<td md-cell> {{row.sotruong.toString()}}</td>
+										<!--<td md-cell>{{row.motakinhnghiem}}</td>-->
+										<td md-cell>
+											<md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Profile" ng-click="vm.modelDetail(row.cmnd)">
+												<md-icon md-svg-icon="images/pencil-edit.svg"></md-icon>
+											</md-button>
+											<md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Profile" ng-click="vm.showConfirm($event, row.cmnd)">
+												<md-icon md-svg-icon="images/delete.svg"></md-icon>
+											</md-button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</md-table-container>
+						<div flex></div>
+						<!--<md-table-pagination md-limit="vm.query.limit" md-limit-options="[5, 10, 15]" md-page="vm.query.page" md-total="{{vm.tho.length}}" md-on-paginate="vm.setPage" md-page-select></md-table-pagination>-->
+					</md-content>
+				</md-tab>
+				<md-tab label="Nhân viên">
+					<md-content class="md-padding" layout="column">
+						<div class="col-lg-2">
+							<strong>Tìm kiếm:</strong>
+						</div>
+						<div class="col-lg-10" layout="row">
+							<input type="text" class="form-control" ng-model="vm.timkiemNVVP" placeholder="Tìm kiếm theo CMND, họ tên khách hàng, số điện thoại,...">
+							<div class="input-group-btn">
+								<button class="btn btn-default" type="submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+						<md-table-container>
+							<table md-table>
+								<thead md-head>
+									<tr md-row>
+										<th md-column md-order-by="cmnd">
+											<span>CMND</span>
+										</th>
+										<th md-column md-order-by="hoten">
+											<span>Họ tên</span>
+										</th>
+										<th md-column md-order-by="sodt">
+											<span>Số điện thoại</span>
+										</th>
+										<!--<th md-column md-order-by="email">
+										<span>Email</span>
+										</th>-->
+										<th md-column md-order-by="email">
+											<span>Email</span>
+										</th>
+										<th md-column></th>
+									</tr>
+								</thead>
+								<tbody md-body>
+									<tr md-row ng-repeat="row in vm.nhanvienvp | orderBy: cmnd | filter: vm.timkiemNVVP">
+										<td md-cell>{{row.cmnd}}</td>
+										<td md-cell>{{row.hoten}}</td>
+										<td md-cell>{{row.sodt}}</td>
+										<!--<td md-cell>{{row.email}}</td>-->
+										<td md-cell> {{row.email}}</td>
+										<!--<td md-cell>{{row.motakinhnghiem}}</td>-->
+										<td md-cell>
+											<md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Profile" ng-click="vm.modelNVVPDetail(row.cmnd)">
+												<md-icon md-svg-icon="images/pencil-edit.svg"></md-icon>
+											</md-button>
+											<md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Profile" ng-click="vm.dklichban(row.cmnd)">
+												<md-icon md-svg-icon="images/calendar.svg"></md-icon>
+											</md-button>
+											<md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Profile" ng-click="vm.showConfirmvp($event, row.cmnd)">
+												<md-icon md-svg-icon="images/delete.svg"></md-icon>
+											</md-button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</md-table-container>
+					</md-content>
+				</md-tab>
+			</md-tabs>
+		</md-content>
+	</div>
+</div>
+
+<div ng-show="vm.select===2">
+	<div class="md-toolbar-tools padding-15 link">
+		<h2>LƯƠNG NHÂN VIÊN</h2>
+	</div>
+	<md-divider></md-divider>
+	<div ng-cloak>
+		<md-content>
+			<md-tabs md-dynamic-height md-border-bottom>
+				<md-tab label="Thợ sửa chữa" ng-click="vm.checktab=true">
+					<md-content class="md-padding" layout="column">
+						<div layout="row" class="col-lg-12">
+							<label flex="50%" class="col-lg-6">Tìm kiếm theo:</label>
+							<label flex="50%" class="col-lg-6">Thời gian(tháng/năm):</label>
+						</div>
+						<div class="form-group col-lg-12">
+							<!--<div class="col-lg-2">
+								<select class="form-control" ng-model="vm.luachon" ng-init="vm.luachon='Tất cả'">
+									<option value="Tất cả">Tất cả</option>
+									<option value="CMND">CMND</option>
+									<option value="Họ tên">Họ tên</option>
+									<option value="SĐT">SĐT</option>
+								</select>
+							</div>-->
+
+							<div class="col-lg-5" layout="row">
+								<input type="text" class="form-control" ng-model="vm.timkiemLT" placeholder="Tìm kiếm...">
+								<div class="input-group-btn">
+									<button class="btn btn-default" type="submit">
+										<i class="glyphicon glyphicon-search"></i>
+									</button>
+								</div>
+							</div>
+							<div class="col-lg-1"></div>
+							<div class="col-lg-2 padding-l15">
+								<select class="form-control" ng-model="vm.thang" ng-init="vm.thang='11'">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option value="12">12</option>
+								</select>
+							</div>
+							<div class="col-lg-2 padding-l15">
+								<input type="number" ng-model="vm.nam" class="form-control" placeholder="vm.nam">
+							</div>
+							<button type="button" class="btn btn-primary col-lg-1" ng-click="vm.tinhluong()">Xem</button>
+						</div>
+						<md-table-container>
+							<table md-table>
+								<thead md-head>
+									<tr md-row>
+										<th md-column>
+											<span>Hình ảnh</span>
+										</th>
+										<th md-column md-order-by="cmnd">
+											<span>CMND</span>
+										</th>
+										<th md-column md-order-by="hoten">
+											<span>Họ tên</span>
+										</th>
+										<th md-column md-order-by="sodt">
+											<span>Số điện thoại</span>
+										</th>
+										<!--<th md-column md-order-by="email">
+										<span>Email</span>
+										</th>-->
+										<th md-column md-order-by="sotruong">
+											<span>Số giờ làm</span>
+										</th>
+										<th md-column md-order-by="sotruong">
+											<span>Lương</span>
+										</th>
+										<th md-column></th>
+									</tr>
+								</thead>
+								<tbody md-body>
+									<tr md-row ng-repeat="row in vm.tho | orderBy: cmnd | filter: vm.timkiemLT">
+										<td md-cell>
+											<img ng-src="{{row.hinhanh}}" class="size-image-table">
+										</td>
+										<td md-cell>{{row.cmnd}}</td>
+										<td md-cell>{{row.hoten}}</td>
+										<td md-cell>{{row.sodt}}</td>
+										<!--<td md-cell>{{row.email}}</td>-->
+										<td md-cell> {{row.tongGioLam}}</td>
+										<td md-cell> {{row.luong | number : fractionSize}} VNĐ</td>
+										<!--<td md-cell>{{row.motakinhnghiem}}</td>-->
+										<td md-cell>
+											<md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Profile" ng-click="showlich($event, row)">
+												<md-icon md-svg-icon="images/pencil-edit.svg"></md-icon>
+											</md-button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</md-table-container>
+						<!--<div flex></div>
+						<md-table-pagination md-limit="vm.query.limit" md-limit-options="[5, 10, 15]" md-page="vm.query.page" md-total="{{vm.tho.length}}" md-on-paginate="vm.setPage" md-page-select></md-table-pagination>-->
+					</md-content>
+				</md-tab>
+				<md-tab label="Nhân viên">
+					<md-content class="md-padding" layout="column">
+						<div layout="row" class="col-lg-12">
+							<label flex="50%" class="col-lg-6">Tìm kiếm:</label>
+							<label flex="50%" class="col-lg-6">Thời gian(tháng/năm):</label>
+						</div>
+						<div class="form-group col-lg-12">
+							<!--<div class="col-lg-2">
+								<select class="form-control" ng-model="vm.luachon" ng-init="vm.luachon='Tất cả'">
+									<option value="Tất cả">Tất cả</option>
+									<option value="CMND">CMND</option>
+									<option value="Họ tên">Họ tên</option>
+									<option value="SĐT">SĐT</option>
+								</select>
+							</div>
+-->
+							<div class="col-lg-5" layout="row">
+								<input type="text" class="form-control" ng-model="vm.timkiemLNVVP" placeholder="Tìm kiếm...">
+								<div class="input-group-btn">
+									<button class="btn btn-default" type="submit">
+										<i class="glyphicon glyphicon-search"></i>
+									</button>
+								</div>
+							</div>
+							<div class="col-lg-1"></div>
+							<div class="col-lg-2 padding-l15">
+								<select class="form-control" ng-model="vm.thang" ng-init="vm.thang='11'">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option value="12">12</option>
+								</select>
+							</div>
+							<div class="col-lg-2 padding-l15">
+								<input type="number" ng-model="vm.nam" class="form-control" placeholder="vm.nam">
+							</div>
+							<button type="button" class="btn btn-primary col-lg-1" ng-click="vm.tinhluong()">Xem</button>
+						</div>
+						<md-table-container>
+							<table md-table>
+								<thead md-head>
+									<tr md-row>
+										<th md-column md-order-by="cmnd">
+											<span>CMND</span>
+										</th>
+										<th md-column md-order-by="hoten">
+											<span>Họ tên</span>
+										</th>
+										<th md-column md-order-by="sodt">
+											<span>Số điện thoại</span>
+										</th>
+										<th md-column md-order-by="email">
+											<span>Số ngày nghỉ</span>
+										</th>
+										<th md-column md-order-by="luong">
+											<span>Lương</span>
+										</th>
+										<th md-column></th>
+									</tr>
+								</thead>
+								<tbody md-body>
+									<tr md-row ng-repeat="row in vm.nhanvienvp | orderBy: cmnd | filter: vm.timkiemLNVVP">
+										<td md-cell>{{row.cmnd}}</td>
+										<td md-cell>{{row.hoten}}</td>
+										<td md-cell>{{row.sodt}}</td>
+										<td md-cell>{{row.songaynghi}}</td>
+										<td md-cell> {{row.luong | number : fractionSize}}</td>
+										<!--<td md-cell>{{row.motakinhnghiem}}</td>-->
+										<td md-cell>
+											<md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Profile" ng-click="showlich($event, row)">
+												<md-icon md-svg-icon="images/pencil-edit.svg"></md-icon>
+											</md-button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</md-table-container>
+					</md-content>
+				</md-tab>
+			</md-tabs>
+		</md-content>
+	</div>
+</div>
+
+<div ng-show="vm.select===3" layout="column">
+	<div class="md-toolbar-tools padding-15 link">
+		<h2>TÀI KHOẢN NHÂN VIÊN</h2>
+	</div>
+	<md-divider></md-divider>
+
+	<div layout="row" class="col-lg-12">
+		<label flex="50%" class="col-lg-6">Tìm kiếm:</label>
+	</div>
+	<div class="form-group col-lg-12">
+		<div class="col-lg-10" layout="row">
+			<input type="text" class="form-control" ng-model="vm.timkiemTK" placeholder="Tìm kiếm...">
+			<div class="input-group-btn">
+				<button class="btn btn-default" type="submit">
+					<i class="glyphicon glyphicon-search"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+	<md-table-container>
+		<table md-table>
+			<thead md-head md-order="id">
+				<tr md-row>
+					<th md-column>
+						<span>Hình ảnh</span>
+					</th>
+					<th md-column md-order-by="tenkhachhang">
+						<span>Họ tên</span>
+					</th>
+					<th md-column md-order-by="taikhoan">
+						<span>Tài khoản</span>
+					</th>
+					<th md-column>
+						<span>Mật khẩu</span>
+					</th>
+					<th md-column>
+						<span>Phân quyền</span>
+					</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody md-body>
+				<tr md-row ng-repeat="t in vm.tho | filter: {xacnhan: true} | filter:  vm.timkiemTK">
+					<td md-cell class="margin-5">
+						<img ng-src="{{t.hinhanh}}" class="size-image-table">
+					</td>
+					<td md-cell>{{t.hoten}}</td>
+					<td md-cell>{{t.account.username}}</td>
+					<td md-cell>
+						<input value="{{t.account.passwork}}" type="password" ng-disabled="true">
+					</td>
+					<td md-cell>
+						<span ng-show="t.account.quyen === 'tho'">Thợ sửa chữa</span>
+						<span ng-show="t.account.quyen === 'nhanvienxl'">Nhân viên xử lý</span>
+						<span ng-show="t.account.quyen === 'nhanvienkt'">Nhân viên Kế toán</span>
+						<span ng-show="t.account.quyen === 'quantri'">Quản trị</span>
+						<span ng-show="t.account.quyen === 'admin'">Admin</span>
+					</td>
+					<td md-cell layout="row">
+						<md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Profile" ng-click="showgdthaydoimatkhau($event,t)">
+							<md-icon md-svg-icon="images/pencil-edit.svg"></md-icon>
+						</md-button>
+					</td>
+				</tr>
+				<tr md-row ng-repeat="vp in vm.nhanvienvp  | filter:  vm.timkiemTK">
+					<td md-cell class="margin-5">
+						<img ng-src="{{vp.hinhanh}}" class="size-image-table">
+					</td>
+					<td md-cell>{{vp.hoten}}</td>
+					<td md-cell>{{vp.account.username}}</td>
+					<td md-cell>
+						<input value="{{vp.account.passwork}}" type="password" ng-disabled="true">
+					</td>
+					<td md-cell>
+						<span ng-show="vp.account.quyen === 'tho'">Thợ sửa chữa</span>
+						<span ng-show="vp.account.quyen === 'nhanvienxl'">Nhân viên xử lý</span>
+						<span ng-show="vp.account.quyen === 'nhanvienkt'">Nhân viên Kế toán</span>
+						<span ng-show="vp.account.quyen === 'quantri'">Quản trị</span>
+						<span ng-show="vp.account.quyen === 'admin'">Admin</span>
+					</td>
+					<td md-cell layout="row">
+						<md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Profile" ng-click="showgdthaydoimatkhau($event,vp)">
+							<md-icon md-svg-icon="images/pencil-edit.svg"></md-icon>
+						</md-button>
+						<!--<md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Profile" ng-click="vm.showConfirm($event, row.cmnd)">
+                           <md-icon md-svg-icon="images/delete.svg"></md-icon>
+                        </md-button> -->
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</md-table-container>
+</div>

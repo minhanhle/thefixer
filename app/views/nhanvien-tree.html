@@ -1,0 +1,46 @@
+<!--<div flex="100">
+	<div class="md-toolbar-tools background-tree">
+		<h1>Tìm kiếm</h1>
+		<div flex></div>
+		<md-button class="md-fab md-primary" ng-click="vm.search()" aria-span="Settings">
+			<md-icon md-svg-icon="images/search.svg"></md-icon>
+		</md-button>
+	</div>
+	<md-divider></md-divider>
+	<md-content>
+		<md-input-container md-no-float class="md-block" flex-gt-sm>
+			<span>Số chứng minh nhân dân</span>
+			<input type="text" ng-model="aw">
+		</md-input-container>
+
+		<md-input-container md-no-float class="md-block" flex-gt-sm>
+			<span>Họ tên nhân viên</span>
+			<input type="text" ng-model="vm.condition.hoten">
+		</md-input-container>
+
+		<md-input-container md-no-float class="md-block" flex-gt-sm>
+			<span>Số điện thoại</span>
+			<input type="number" ng-model="vm.condition.sodt">
+		</md-input-container>
+
+		<span class="margin a15">Sở trường</span>
+		<div class="md-block" flex="100">
+			<md-checkbox class="md-primary" ng-repeat="dv in vm.dsdv" ng-click="toggle(dv.tenDichVu, vm.selected)">
+				{{dv.tenDichVu}}
+			</md-checkbox>
+		</div>
+	</md-content>
+</div>-->
+<md-list flex>
+	<md-content>
+		<md-list-item class="md-3-line" ng-click="vm.select=1; vm.mode('khachhang')" class="item-menu">
+			Danh sách nhân viên
+		</md-list-item>
+		<md-list-item class="md-3-line" ng-click="vm.select=2; vm.mode('khachhang')" class="item-menu">
+			Lương nhân viên
+		</md-list-item>
+		<md-list-item class="md-3-line" ng-click="vm.select=3; vm.mode('khachhang')" class="item-menu">
+			Tài khoản nhân viên
+		</md-list-item>
+	</md-content>
+</md-list>

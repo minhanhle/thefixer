@@ -1,0 +1,31 @@
+<md-dialog aria-label="Danh sánh tìm kiếm" ng-cloak flex="60">
+	<form>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>Đăng ký lịch nghỉ của thợ sửa chữa</h2>
+				<span flex></span>
+				<md-button class="md-icon-button" ng-click="cancel()">
+					<md-icon md-svg-src="images/cancel.svg" aria-label="Close dialog"></md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+		<md-dialog-content>
+			<div class="md-dialog-content" layout="column">
+				<span>Ngày: {{vm.ngaynghi | date: 'dd/MM/yyyy'}}</span>
+				<md-input-container>
+					<span>Thời gian: </span>
+					<md-select ng-model="vm.thoigian">
+						<md-option>Cả ngày</md-option>
+						<md-option>Buổi sáng</md-option>
+						<md-option>Buổi chiều</md-option>
+					</md-select>
+				</md-input-container>
+				<div layout="row">
+					<span flex="80"></span>
+					<md-button class="md-raised" ng-click="vm.luulichnghitho()">Save</md-button>
+					<md-button class="md-raised" ng-click="cancel()">Cancel</md-button>
+				</div>
+			</div>
+		</md-dialog-content>
+	</form>
+</md-dialog>

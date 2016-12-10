@@ -1,0 +1,89 @@
+<div class="md-toolbar-tools padding-15">
+	<a ui-sref="nhanvien" class="link">NHÂN VIÊN /</a>
+	<span class="link"> THÊM NHÂN VIÊN VĂN PHÒNG</span>
+</div>
+<div layout-align="center center" layout="row">
+	<span class="error">{{vm.message}}</span>
+</div>
+<br>
+<div layout="row">
+	<div flex="45" class="padding-15" layout="column">
+
+		<span>Số chứng minh nhân dân</span>
+		<md-input-container>
+			<input type="text" ng-model="data.cmnd">
+		</md-input-container>
+
+		<span>Họ tên nhân viên</span>
+		<md-input-container>
+			<input type="text" ng-model="data.hoten">
+		</md-input-container>
+
+		<span>Ngày sinh</span>
+		<md-input-container>
+			<input mdc-datetime-picker="" time="false" date="true" type="text" format="DD/MM/YYYY" ng-model="data.ngaysinh">
+		</md-input-container>
+		<br>
+
+		<span>Giới tính</span>
+		<md-input-container>
+			<md-select ng-model="data.gioitinh">
+				<md-option value="Nam">Nam</md-option>
+				<md-option value="Nữ">Nữ</md-option>
+			</md-select>
+		</md-input-container>
+		<br>
+
+		<span>Quê quán</span>
+		<md-input-container>
+			<input type="text" ng-model="data.quequan">
+		</md-input-container>
+
+		<span>Địa chỉ</span>
+		<md-input-container>
+			<input type="text" ng-model="data.diachihientai">
+		</md-input-container>
+		
+		<span ng-show="false">Xác nhận</span>
+		<md-input-container ng-show="false">
+			<input type="text" ng-model="data.xacnhan" ng-init="data.xacnhan='false'">
+		</md-input-container>
+
+	</div>
+	<div flex="10"></div>
+	<div flex="45" class="padding-15" layout="column">
+
+		<span>Số điện thoại</span>
+		<md-input-container>
+			<input type="text" ng-model="data.sodt">
+		</md-input-container>
+
+		<span>Email</span>
+		<md-input-container>
+			<input type="text" ng-model="data.email">
+		</md-input-container>
+		
+		
+		<span>Lương(tháng)</span>
+		<md-input-container>
+			<input type="text" ng-model="data.luongtheothang" currency-input = "">
+		</md-input-container>
+
+		<span>Hình ảnh</span>
+		<md-input-container>
+			<input type="text" ng-model="data.hinhanh">
+			<br>
+			<!--<input type="file" ng-file-select="onFileSelect($files)" >-->
+			<!--<input type="text" ng-model="vm.nv.hinhanh"> -->
+			<img ng-src="{{data.hinhanh}}" alt="Cập nhật hình ảnh" height="250px" width="250px">
+		</md-input-container>
+
+
+	</div>
+</div>
+<span flex></span>
+<div layout="row">
+	<span flex></span>
+	<md-button class="md-raised" ng-click="vm.themnvvp()">Save</md-button>
+	<md-button class="md-raised">Cancel</md-button>
+</div>

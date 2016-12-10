@@ -1,0 +1,84 @@
+<div class="md-toolbar-tools">
+	<h2 class="link">YÊU CẦU KHÁCH HÀNG</h2>
+	<span flex></span>
+	<md-button class="md-fab md-primary md-hue-2" aria-label="Profile" ng-click="vm.modelNew('')">
+		<md-icon md-svg-icon="images/add.svg"></md-icon>
+	</md-button>
+</div>
+<!--<div class="draw"></div>-->
+<md-divider></md-divider>
+<br>
+
+<md-content layout="column">
+	<!--<div class="form-group col-lg-12">-->
+		<div class="col-lg-2">
+			<strong>Tìm kiếm:</strong>
+		</div>
+		<div class="col-lg-10" layout="row">
+			<input type="text" class="form-control" ng-model="vm.timkiem" placeholder="Tìm kiếm theo họ tên khách hàng, số điện thoại, trạng thái,...">
+			<div class="input-group-btn">
+				<button class="btn btn-default" type="submit">
+					<i class="glyphicon glyphicon-search"></i>
+				</button>
+			</div>
+		</div>
+	<!--</div>-->
+	<md-table-container>
+		<table md-table>
+			<thead md-head md-order="ngaydatyeucau">
+				<tr md-row>
+					<!--<th md-column md-order-by="mayc">
+                        <span>Mã yêu cầu</span>
+                    </th>-->
+					<th md-column md-order-by="ngaydatyeucau">
+						Ngày đặt yêu cầu
+					</th>
+					<th md-column md-order-by="hotenKH">
+						<span>Họ tên KH</span>
+					</th>
+					<th md-column md-order-by="sodt">
+						<span>SĐT</span>
+					</th>
+					<th md-column md-order-by="dichvuyc.toString()">
+						<span>Dịch vụ</span>
+					</th>
+					<th md-column md-order-by="trangthai">
+						<span>Trạng thái</span>
+					</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody md-body>
+				<tr md-row data-ng-repeat="row in vm.yeucau | orderBy: ngaydatyeucau:false | filter: vm.timkiem">
+					<!--<td md-cell>{{row.mayc}}</td>-->
+					<td md-cell>{{row.ngaydatyeucau | date:'dd/MM/yyyy'}}</td>
+					<td md-cell>{{row.hotenKH}}</td>
+					<td md-cell>{{row.sodt}}</td>
+					<td md-cell>{{row.dichvuyc.toString()}}</td>
+					<td md-cell>
+						<md-button class="md-raised md-primary" ng-click="vm.capnhattrangthai(row, 'Đang thực hiện')" ng-show="row.trangthai==='Bắt đầu'">
+							Bắt đầu
+						</md-button>
+						<md-button class="md-raised md-primary" ng-click="vm.capnhattrangthai(row, 'Kết thúc')" ng-show="row.trangthai==='Đang thực hiện'">
+							Thực hiện
+						</md-button>
+						<md-button ng-show="row.trangthai==='Kết thúc'" class="md-primary" ng-click="" disable>
+							Kết thúc
+						</md-button>
+						<!--{{row.trangthai}}-->
+					</td>
+					<td md-cell layout="row">
+						<md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Profile" ng-click="vm.modelDetail(row._id)">
+							<md-icon md-svg-icon="images/pencil-edit.svg"></md-icon>
+						</md-button>
+						<md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Profile" ng-click="vm.showConfirm($event,row._id)">
+							<md-icon md-svg-icon="images/delete.svg"></md-icon>
+						</md-button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</md-table-container>
+</md-content>
+<span flex></span>
+<!--<md-table-pagination md-limit="vm.query.limit" md-limit-options="[5, 10, 15]" md-page="vm.query.page" md-total="{{vm.yeucau.length}}" md-on-paginate="vm.setPage" md-page-select></md-table-pagination>-->

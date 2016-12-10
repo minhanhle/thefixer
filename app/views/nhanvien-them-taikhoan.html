@@ -1,0 +1,49 @@
+<md-dialog aria-label="Cập nhật thông tin dịch vụ" ng-cloak flex="60">
+	<form>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>Tạo tài khoản ({{nv.hoten}} - {{nv.cmnd}})</h2>
+				<span flex></span>
+				<md-button class="md-icon-button" ng-click="cancel()">
+					<md-icon md-svg-src="images/cancel.svg" aria-label="Close dialog"></md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+		<!--<div layout-align="center center" layout = "row">
+			<span class="error">{{vm.message}}</span>
+		</div>-->
+		<md-dialog-content>
+			<div layout="row" layout-align="center">
+				<div flex="80" class="padding-15" layout="column">
+					<div layout="row" layout-align="center" class="error" ng-if="(newPass!==renewPass) && (renewPass && newPass)">
+						Vui lòng nhập lại mật khẩu xác nhận!
+					</div>
+
+					<span>Tài khoản</span>
+					<md-input-container>
+						<input type="text" ng-model="account.username" ng-disabled="!isAdd">
+					</md-input-container>
+
+					<span>Mật khẩu</span>
+					<md-input-container>
+						<input type="password" ng-model="account.passwork">
+					</md-input-container>
+
+					<span>Phân quyền: </span>
+					<md-select ng-model="account.quyen">
+						<md-option value="tho">Thợ sửa chữa</md-option>
+						<md-option value="nhanvienxl">Nhân viên xử lý</md-option>
+						<md-option value="nhanvienkt">Nhân viên kế toán</md-option>
+						<md-option value="quantri">Quản trị</md-option>
+					</md-select>
+				</div>
+			</div>
+			<span flex></span>
+			<div layout="row">
+				<span flex="80"></span>
+				<md-button class="md-raised" ng-click="taomatkhau()">Save</md-button>
+				<md-button class="md-raised" ng-click="cancel()">Cancel</md-button>
+			</div>
+		</md-dialog-content>
+	</form>
+</md-dialog>

@@ -1,0 +1,36 @@
+<md-card>
+	<div layout-align="center center" layout="row" class="md-toolbar-tools padding-15">
+		<span>Thêm dịch vụ</span>
+	</div>
+</md-card>
+<!--<div layout-align="center center" layout = "row">
+	<span class="error">{{vm.message}}</span>
+</div>-->
+<md-divider></md-divider>
+<br>
+<md-card>
+	<div layout="row" layout-align="center">
+		<div flex="45" class="padding-15" layout="column">
+			<span>Tên dịch vụ</span>
+			<md-input-container>
+				<input type="text" ng-model="data.tenDichVu">
+			</md-input-container>
+
+			<span>Chi phí theo giờ</span>
+			<md-input-container>
+				<input type="number" ng-model="data.phiTheoGio">
+			</md-input-container>
+
+			<span>Mô tả</span>
+			<md-input-container>
+				<textarea ng-model="data.mota" md-maxlength="300"></textarea>
+			</md-input-container>
+		</div>
+	</div>
+	<span flex></span>
+	<div layout="row">
+		<span flex="55"></span>
+		<md-button class="md-raised" ng-click="vm.themdv(data)">Save</md-button>
+		<md-button class="md-raised" ng-click="vm.canceldv()">Cancel</md-button>
+	</div>
+</md-card>

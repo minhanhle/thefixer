@@ -1,0 +1,43 @@
+<md-dialog aria-label="Cập nhật thông tin dịch vụ" ng-cloak flex="60">
+	<form>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>Cập nhật thông tin dịch vụ</h2>
+				<span flex></span>
+				<md-button class="md-icon-button" ng-click="cancel()">
+					<md-icon md-svg-src="images/cancel.svg" aria-label="Close dialog"></md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+		<!--<div layout-align="center center" layout = "row">
+		<span class="error">{{vm.message}}</span>
+	</div>-->
+		<md-dialog-content>
+			<md-card>
+				<div layout="row" layout-align="center">
+					<div flex="80" class="padding-15" layout="column">
+						<span>Tên dịch vụ</span>
+						<md-input-container>
+							<input type="text" ng-model="data.tenDichVu">
+						</md-input-container>
+
+						<span>Chi phí theo giờ</span>
+						<md-input-container>
+							<input type="number" ng-model="data.phiTheoGio">
+						</md-input-container>
+
+						<span>Mô tả</span>
+						<md-input-container>
+							<textarea ng-model="data.mota" md-maxlength="300"></textarea>
+						</md-input-container>
+					</div>
+				</div>
+				<span flex></span>
+				<div layout="row">
+					<span flex="80"></span>
+					<md-button class="md-raised" ng-click="luucapnhatdv(data)">Save</md-button>
+				</div>
+			</md-card>
+		</md-dialog-content>
+	</form>
+</md-dialog>

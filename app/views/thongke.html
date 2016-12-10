@@ -1,0 +1,70 @@
+<md-card>
+	<div class="md-toolbar-tools ">
+		<h1>Thống kê</h1>
+		<div flex="30"></div>
+		<span>Thời gian</span>
+		<div flex="20" class="margin-b25">
+			<md-datepicker ng-model="vm.start" md-placeholder="To..."></md-datepicker>
+		</div>
+		<div flex="20" class="margin-b25 margin r15">
+			<md-datepicker ng-model="vm.end" md-placeholder="From"></md-datepicker>
+		</div>
+		<md-button class="md-raised" ng-click="vm.xuly()">
+			Xử lý
+		</md-button>
+		<md-button class="md-raised" ng-click="vm.generatePDF()">
+			Export
+		</md-button>
+	</div>
+</md-card>
+<div id="formConfirmation">
+	<div layout="row" layout-align="space-around">
+		<div layout="column" flex="45">
+			<md-toolbar>
+				<div class="md-toolbar-tools">
+					<h2>Dịch vụ</h2>
+				</div>
+			</md-toolbar>
+			<div google-chart chart="chartYeuCau" agc-on-ready="readyHandlerbyService(chartWrapper)" style="height:400px; width:100%;"></div>
+		</div>
+		<div layout="column" flex="45">
+			<md-toolbar>
+				<div class="md-toolbar-tools">
+					<h2>Quận</h2>
+				</div>
+			</md-toolbar>
+			<div google-chart chart="chartQuan" agc-on-ready="readyHandlerbyDistrict(chartWrapper)" style="height:400px; width:100%;"></div>
+		</div>
+	</div>
+
+	<div layout="column"  class="padding-30">
+		<div layout="column" flex="80" layout-align="center center">
+			<md-toolbar>
+				<div class="md-toolbar-tools">
+					<h2>Thời gian thực hiện yêu cầu</h2>
+				</div>
+			</md-toolbar>
+		</div>
+
+		<div layout="row" layout-align="space-around">
+			<div layout="column" flex="45">
+				<div google-chart chart="chartDate" agc-on-ready="readyHandlerbyDate(chartWrapper)" style="height:400px; width:100%;"></div>
+			</div>
+			<div layout="column" flex="45">
+				<!--<div layout="column" style="height:200px; width:75%;" id="byTime">-->
+				<!--<md-toolbar>
+				<div class="md-toolbar-tools">
+					<h2>Yêu cầu</h2>
+				</div>
+			</md-toolbar>-->
+				<br><br>
+				<div layout="row" layout-align="center"><strong>Thống kê yêu cầu theo khoảng thời gian thực hiện</strong></div>
+				<br>
+				<canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-colors="colors" chart-dataset-override="chartTime">
+				</canvas>
+				<!--</div>-->
+			</div>
+		</div>
+
+	</div>
+</div>

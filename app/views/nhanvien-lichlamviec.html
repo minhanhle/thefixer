@@ -1,0 +1,106 @@
+<div layout="row">
+	<div flex="30" class="padding-15">
+		<div layout-align="center center" layout="row">
+			<img ng-src="{{vm.nv.hinhanh}}" alt="Cập nhật hình ảnh" height="110px" width="110px">
+		</div>
+		<br>
+		<table class="table table-striped">
+			<tbody>
+				<tr>
+					<td>Họ tên</td>
+					<td>{{vm.nv.hoten}}</td>
+				</tr>
+				<tr>
+					<td>CMND</td>
+					<td>{{vm.nv.cmnd}}</td>
+				</tr>
+				<tr>
+					<td>Ngày sinh</td>
+					<td>{{vm.nv.ngaysinh | date : dd/mm/yyyy}}</td>
+				</tr>
+				<!--<tr>
+					<td>Giới tính</td>
+					<td>{{vm.nv.gioitinh}}</td>
+				</tr>-->
+				<tr>
+					<td>SĐT</td>
+					<td>{{vm.nv.sodt}}</td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td>{{vm.nv.email}}</td>
+				</tr>
+				<tr>
+					<td>Quên quán</td>
+					<td>{{vm.nv.quequan}}</td>
+				</tr>
+				<tr>
+					<td>Địa chỉ</td>
+					<td>{{vm.nv.diachihientai}}</td>
+				</tr>
+				<tr>
+					<td>Trình độ học vấn</td>
+					<td>{{vm.nv.trinhdohocvan}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div flex="70" class="padding-15">
+		<!--<md-card ng-hide="vm.select">
+			<div class="md-toolbar-tools padding-15">
+				<h2>Đăng ký lịch làm việc</h2>
+			</div>
+		</md-card>-->
+		<br>
+		<div class="row">
+			<div class="col-md-6 text-center">
+				<div class="btn-group">
+
+					<button class="btn btn-primary" mwl-date-modifier date="vm.viewDate" decrement="vm.calendarView" ng-click="vm.cellIsOpen = false">
+						Previous
+					</button>
+					<button class="btn btn-default" mwl-date-modifier date="vm.viewDate" set-to-today ng-click="vm.cellIsOpen = false">
+						{{ vm.calendarTitle}}
+					</button>
+					<button class="btn btn-primary" mwl-date-modifier date="vm.viewDate" increment="vm.calendarView" ng-click="vm.cellIsOpen = false">
+						Next
+					</button>
+				</div>
+			</div>
+
+			<br class="visible-xs visible-sm">
+
+			<div class="col-md-6 text-center">
+				<div class="btn-group">
+					<label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'year'" ng-click="vm.cellIsOpen = false">Year</label>
+					<label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'month'" ng-click="vm.cellIsOpen = false">Month</label>
+					<label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'week'" ng-click="vm.cellIsOpen = false">Week</label>
+					<label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'day'" ng-click="vm.cellIsOpen = false">Day</label>
+				</div>
+			</div>
+
+		</div>
+
+		<br>
+
+		<mwl-calendar events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate" on-timespan-click="vm.dklichnghi(calendarDate)" cell-is-open="vm.cellIsOpen" on-event-click="vm.modeDetail(calendarEvent.mayc)" day-view-start="06:00" day-view-end="21:59">
+		</mwl-calendar>
+		<!--<calendar-md flex layout layout-fill
+		  calendar-direction="direction"
+		  on-prev-month="prevMonth"
+		  on-next-month="nextMonth"
+		  on-day-click="dayClick"
+		  title-format="'MMMM y'"
+		  ng-model='selectedDate'
+		  week-starts-on="firstDayOfWeek"
+		  data-start-month="7"
+		  data-start-year="2016"
+		  tooltips="tooltips"
+		  day-format="dayFormat"
+		  day-label-format="'EEE'"
+		  day-label-tooltip-format="'EEEE'"
+		  day-tooltip-format="'fullDate'"
+		  day-content="setDayContent"
+		  disable-future-selection="false"></calendar-md>-->
+	</div>
+</div>

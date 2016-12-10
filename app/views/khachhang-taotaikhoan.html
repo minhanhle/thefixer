@@ -1,0 +1,44 @@
+<md-dialog aria-label="Cập nhật thông tin dịch vụ" ng-cloak flex="60">
+	<form>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>Tạo tài khoản khách hàng</h2>
+				<!--<span flex></span>
+			<md-button class="md-icon-button" ng-click="cancel()">
+			  <md-icon md-svg-src="images/cancel.svg" aria-label="Close dialog"></md-icon>
+			</md-button>-->
+			</div>
+		</md-toolbar>
+		<!--<div layout-align="center center" layout = "row">
+			<span class="error">{{vm.message}}</span>
+		</div>-->
+		<md-dialog-content>
+			<div layout="row" layout-align="center" class="error" ng-if="(data.matkhau!==data.xacnhan) && (data.matkhau && data.xacnhan)">
+				Vui lòng nhập lại mật khẩu xác nhận!
+			</div>
+			<div layout="row" layout-align="center">
+				<div flex="80" class="padding-15" layout="column">
+					<span>Tài khoản</span>
+					<md-input-container>
+						<input type="text" ng-model="taikhoan" disabled>
+					</md-input-container>
+
+					<span>Nhập mật khẩu </span>
+					<md-input-container>
+						<input type="password" ng-model="data.matkhau">
+					</md-input-container>
+					<span>Nhập lại mật khẩu</span>
+					<md-input-container>
+						<input type="password" ng-model="data.xacnhan">
+					</md-input-container>
+				</div>
+			</div>
+			<span flex></span>
+			<div layout="row">
+				<span flex="80"></span>
+				<md-button class="md-raised" ng-click="vm.luumatkhau(false, data, vm.cus._id)">Save</md-button>
+				<md-button class="md-raised" ng-click="cancel()">Cancel</md-button>
+			</div>
+		</md-dialog-content>
+	</form>
+</md-dialog>

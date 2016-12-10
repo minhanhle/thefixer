@@ -1,0 +1,38 @@
+<div flex="100">
+	<div class="md-toolbar-tools background-tree">
+		<p style="font-family:Times New Roman; font-size: 130%; font-weight: bold;">Tìm kiếm</p>
+		<div flex></div>
+		<md-button class="md-fab md-primary" ng-click="vm.search()" aria-span="Settings">
+			<md-icon md-svg-icon="images/search.svg"></md-icon>
+		</md-button>
+	</div>
+	<md-divider></md-divider>
+	<md-content layout="column" class="viewtree">
+		<md-input-container md-no-float class="md-block" flex-gt-sm>
+			<strong>Họ tên nhân viên</strong>
+			<input type="text" ng-model="vm.condition.hoten">
+		</md-input-container>
+
+		<strong>Ngày làm</strong>
+		<br>
+		<md-datepicker ng-model="vm.ngaylam" md-placeholder=""></md-datepicker>
+		<br>
+		<md-input-container>
+			<strong>Bắt đầu</strong>
+			<input mdc-datetime-picker time="true" date="false" type="text" format="HH:mm" ng-model="vm.giobatdau">
+		</md-input-container>
+
+		<md-input-container>
+			<strong>Kết thúc</strong>
+			<input mdc-datetime-picker time="true" date="false" type="text" format="HH:mm" ng-model="vm.giokt">
+		</md-input-container>
+
+		<strong>Sở trường</strong>
+		<br>
+		<div class="md-block" flex="100">
+			<md-checkbox class="md-primary" ng-repeat="dv in vm.dsdv" ng-click="toggle(dv.tenDichVu, vm.selected)">
+				{{dv.tenDichVu}}
+			</md-checkbox>
+		</div>
+	</md-content>
+</div>

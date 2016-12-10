@@ -1,0 +1,183 @@
+<div layout="row" layout-align="center center" flex="70" class="padding-t10 error">
+	<span ng-if="vm.requests.length===0" ng-hide="!vm.select">Hiện tại không có yêu cầu!!</span>
+</div>
+
+<md-card flex="70" ng-hide="!vm.select" class="margin a15" ng-repeat="req in vm.requests | orderBy: 'trangthai'">
+	<md-card-title layout="row">
+		<md-card-title-text layout="column">
+			<span class="md-headline">Khách hàng: {{req.hotenKH}}</span>
+			<!--<div layout="row">-->
+			<div layout="column" class="padding-l15">
+				<div layout="row">
+					<md-button target="_blank" ng-disabled="true" class="md-icon-button">
+						<md-icon md-svg-icon="images/phone.svg"></md-icon>
+					</md-button>
+					<span class="padding-t10">{{req.sodt}}</span>
+					<div flex="35"></div>
+
+					<md-button target="_blank" ng-disabled="true" class="md-icon-button">
+						<md-icon md-svg-icon="images/information-button.svg"></md-icon>
+					</md-button>
+					<span class="padding-t10">{{req.trangthai}}</span>
+				</div>
+				<div layout="row">
+					<md-button target="_blank" ng-disabled="true" class="md-icon-button">
+						<md-icon md-svg-icon="images/address.svg"></md-icon>
+					</md-button>
+					<span class="padding-t10">{{req.diachi}}</span>
+					<span flex></span>
+				</div>
+				<!--<div layout="row">
+								<md-button target="_blank" ng-disabled="true"class="md-icon-button">
+									<md-icon md-svg-icon="images/calendar -blue.svg"></md-icon>
+								</md-button>
+								<span class="padding-t10">{{req.ngaylam}}</span>
+								<div flex="35"></div>
+								
+								<md-button target="_blank" ng-disabled="true"class="md-icon-button">
+									<md-icon md-svg-icon="images/clockl.svg"></md-icon>
+								</md-button>
+								<span class="padding-t10">{{req.giobatdau}}-{{req.gioketthuc}}</span>
+							</div>-->
+				<div layout="row">
+					<md-button target="_blank" ng-disabled="true" class="md-icon-button">
+						<md-icon md-svg-icon="images/detail.svg"></md-icon>
+					</md-button>
+					<span class="padding-t10">{{req.mota}}</span>
+				</div>
+			</div>
+			<!--</div>-->
+			<div layout="row" class="padding-l15">
+				<md-button target="_blank" ng-disabled="true" class="md-icon-button">
+					<md-icon md-svg-icon="images/tag.svg"></md-icon>
+				</md-button>
+				<span class="padding-t10">Dịch vụ yêu cầu</span>
+			</div>
+			<div layout="row" class="padding-l25">
+				<span flex="10"></span>
+				<md-button class="md-mini md-raised md-primary" ng-repeat="dv in req.dichvuyc">{{dv}}</md-button>
+			</div>
+			<br>
+			<div layout="row">
+				<div flex></div>
+				<span class="padding-t10" ng-click="vm.modelDetail(req.mayc)">Xem chi tiết</span>
+				<md-button target="_blank" class="md-icon-button" ng-click="vm.modelDetail(req.mayc)">
+					<md-icon md-svg-icon="images/right-arrow.svg"></md-icon>
+				</md-button>
+			</div>
+		</md-card-title-text>
+	</md-card-title>
+</md-card>
+<div class="md-toolbar-tools padding-15" ng-hide="vm.select">
+	<md-icon md-svg-icon="images/blue-user-symbol.svg"></md-icon>
+	<h2>Thông tin cá nhân</h2>
+	<span flex></span>
+</div>
+<div layout="row" ng-hide="vm.select">
+	<div flex="45" class="padding-15" layout="column">
+		<span>Chứng minh nhân dân</span>
+		<md-input-container>
+			<input type="text" ng-model="vm.tho.cmnd">
+		</md-input-container>
+
+		<span>Họ tên</span>
+		<md-input-container>
+			<input type="text" ng-model="vm.tho.hoten">
+		</md-input-container>
+
+		<span>Ngày sinh</span>
+		<md-input-container>
+			<input mdc-datetime-picker="" time="false" date="true" type="text" format="DD/MM/YYYY" ng-model="vm.tho.ngaysinh">
+		</md-input-container>
+
+		<span>Giới tính</span>
+		<md-input-container>
+			<md-select ng-model="vm.tho.gioitinh">
+				<md-option value="Nam">Nam</md-option>
+				<md-option value="Nữ">Nữ</md-option>
+			</md-select>
+		</md-input-container>
+		<br>
+
+		<span>Quê quán</span>
+		<md-input-container>
+			<input type="text" ng-model="vm.tho.quequan">
+		</md-input-container>
+
+		<span>Địa chỉ</span>
+		<md-input-container>
+			<input type="text" ng-model="vm.tho.diachihientai">
+		</md-input-container>
+
+		<span>Số điện thoại</span>
+		<md-input-container>
+			<input type="text" ng-model="vm.tho.sodt" isNumber>
+		</md-input-container>
+
+		<span>Email</span>
+		<md-input-container>
+			<input type="text" ng-model="vm.tho.email">
+		</md-input-container>
+
+		<span>Trình độ học vấn</span>
+		<md-input-container>
+			<input type="text" ng-model="vm.tho.trinhdohocvan">
+		</md-input-container>
+	</div>
+	<div flex="10"></div>
+	<div flex="45" class="padding-15" layout="column">
+		<span>Khu vực làm việc</span>
+		<md-input-container>
+			<md-select ng-model="vm.tho.diachi.tenkhuvuc">
+				<md-option ng-value="kv" ng-repeat="kv in vm.khuvuc">{{kv}}</md-option>
+			</md-select>
+		</md-input-container>
+		<br>
+
+		<span>Quận</span>
+		<md-input-container>
+			<md-select ng-model="vm.tho.diachi.quan">
+				<md-option ng-value="q.tenquan" ng-repeat="q in vm.quans | filter: {tenkhuvuc: vm.tho.diachi.tenkhuvuc }">{{q.tenquan}}</md-option>
+			</md-select>
+		</md-input-container>
+		<br>
+		<br>
+
+		<span>Sở trường</span>
+		<md-input-container>
+			<md-select ng-model="vm.tho.sotruong" multiple>
+				<md-optgroup>
+					<md-option ng-value="dv.tenDichVu" ng-repeat="dv in vm.dsdv">{{dv.tenDichVu}}</md-option>
+				</md-optgroup>
+			</md-select>
+		</md-input-container>
+		<br>
+
+		<span>Mô tả kinh nghiệm</span>
+		<md-input-container>
+			<input type="text" ng-model="vm.tho.motakinhnghiem">
+		</md-input-container>
+
+		<span>Số năm kinh nghiệm</span>
+		<md-input-container>
+			<textarea type="text" ng-model="vm.tho.sonamkinhnghiem"></textarea>
+		</md-input-container>
+
+		<span>Đánh giá</span>
+		<md-input-container>
+			<input type="text" ng-model="vm.tho.danhgia">
+		</md-input-container>
+
+		<span>Hình ảnh</span>
+		<md-input-container>
+			<!--<input type="file" ng-file-select="onFileSelect($files)"  ng-model = "vm.hinhanh">-->
+			<input type="text" ng-model="vm.tho.hinhanh">
+			<img ng-src="{{vm.tho.hinhanh}}" alt="Cập nhật hình ảnh" height="250px" width="250px">
+		</md-input-container>
+	</div>
+</div>
+<span flex="100"></span>
+<div layout="row" ng-hide="vm.select">
+	<span flex></span>
+	<md-button class="md-raised" ng-click="vm.capnhatnv()">Cập nhật</md-button>
+</div>

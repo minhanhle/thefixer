@@ -1,0 +1,55 @@
+<md-card>
+	<div layout-align="center center" layout="row" class="md-toolbar-tools padding-15">
+		<a href="" ui-sref="khachhang">KHÁCH HÀNG /</a>
+		<span>THÊM KHÁCH HÀNG</span>
+	</div>
+</md-card>
+<!--<div layout-align="center center" layout = "row">
+	<span class="error">{{vm.message}}</span>
+</div>-->
+<md-divider></md-divider>
+<br>
+<md-card>
+	<div layout="row" layout-align="center">
+		<div flex="45" class="padding-15" layout="column">
+			<span>Họ tên</span>
+			<md-input-container>
+				<input type="text" ng-model="data.hoten">
+			</md-input-container>
+
+			<span>Số điện thoại</span>
+			<md-input-container>
+				<input type="number" ng-model="data.taikhoan">
+			</md-input-container>
+
+			<span>Địa chỉ</span>
+			<md-input-container>
+				<input type="text" ng-model="data.diachi">
+			</md-input-container>
+
+			<span>Email</span>
+			<md-input-container>
+				<input type="text" ng-model="data.email">
+			</md-input-container>
+
+			<span>OTP</span>
+			<md-input-container>
+				<input type="text" ng-model="data.otp">
+			</md-input-container>
+
+			<span>Hình ảnh</span>
+			<md-input-container>
+				<!--<input type="file" ng-file-select="onFileSelect($files)"  ng-model = "vm.hinhanh">-->
+				<input type="text" ng-model="data.hinhanh">
+				<br>
+				<img ng-src="{{data.hinhanh}}" alt="Cập nhật hình ảnh" class="size-image">
+			</md-input-container>
+		</div>
+	</div>
+	<span flex></span>
+	<div layout="row">
+		<span flex="55"></span>
+		<md-button class="md-raised" ng-click="vm.themkh(data)">Save</md-button>
+		<md-button class="md-raised" ng-click="vm.cancelkh()">Cancel</md-button>
+	</div>
+</md-card>

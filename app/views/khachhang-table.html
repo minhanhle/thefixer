@@ -1,0 +1,140 @@
+<!--<md-card layout="column">-->
+<md-card ng-hide="vm.select">
+	<div class="md-toolbar-tools padding-15">
+		<h2>KHÁCH HÀNG</h2>
+		<span flex></span>
+		<md-button class="md-fab md-primary md-hue-2" aria-label="New" ng-click="vm.mode('khachhang-new')">
+			<md-icon md-svg-icon="images/add.svg"></md-icon>
+		</md-button>
+	</div>
+</md-card>
+<md-divider ng-hide="vm.select"></md-divider>
+<div ng-hide="vm.select">
+	<md-table-container>
+		<table md-table>
+			<thead md-head md-order="id">
+				<tr md-row>
+					<th md-column>
+						<span>Hình ảnh</span>
+					</th>
+					<th md-column md-order-by="tenkhachhang">
+						<span>Họ tên</span>
+					</th>
+					<th md-column md-order-by="taikhoan">
+						<span>Số điện thoại</span>
+					</th>
+					<th md-column md-order-by="diachi">
+						<span>Địa chỉ</span>
+					</th>
+					<th md-column md-order-by="email">
+						<span>Email</span>
+					</th>
+					<th md-column md-order-by="OTP">
+						<span>OTP</span>
+					</th>
+				</tr>
+			</thead>
+			<tbody md-body>
+				<tr md-row ng-repeat="cus in vm.customers | filter: vm.timkiemKH">
+					<td md-cell>
+						<img ng-src="{{cus.hinhanh}}" class="size-image-table">
+					</td>
+					<td md-cell>{{cus.hoten}}</td>
+					<td md-cell>{{cus.taikhoan}}</td>
+					<td md-cell>{{cus.diachi}}</td>
+					<td md-cell> {{cus.email}}</td>
+					<td md-cell> {{cus.otp}}</td>
+					<td md-cell layout="row">
+						<md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Profile" ng-click="vm.modelDetail(cus._id)">
+							<md-icon md-svg-icon="images/pencil-edit.svg"></md-icon>
+						</md-button>
+						<md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Profile" ng-click="vm.showConfirm($event, cus._id)">
+							<md-icon md-svg-icon="images/delete.svg"></md-icon>
+						</md-button>
+					</td>
+					<!--<td md-cell> kh1@gmail.com</td>-->
+					<!--<td md-cell>{{row.hoten}}</td>
+                    <td md-cell>{{row.sodt}}</td>
+                    <td md-cell>{{row.diachi}}</td>
+                    <td md-cell> {{row.email}}</td>-->
+					<!--<td md-cell layout="row">
+						<md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Profile" ng-click="vm.modelDetail(row.cmnd)">
+                           <md-icon md-svg-icon="images/pencil-edit.svg"></md-icon>
+                        </md-button>
+						<md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Profile" ng-click="vm.showConfirm($event, row.cmnd)">
+                           <md-icon md-svg-icon="images/delete.svg"></md-icon>
+                        </md-button> 
+                    </td>-->
+				</tr>
+			</tbody>
+		</table>
+	</md-table-container>
+</div>
+
+<!--Account-->
+<md-card ng-hide="!vm.select">
+	<div class="md-toolbar-tools padding-15">
+		<h2>Tài khoản khách hàng</h2>
+	</div>
+</md-card>
+<md-divider ng-hide="!vm.select"></md-divider>
+<div ng-hide="!vm.select">
+	<md-table-container>
+		<table md-table>
+			<thead md-head md-order="id">
+				<tr md-row>
+					<th md-column>
+						<span>Hình ảnh</span>
+					</th>
+					<th md-column md-order-by="tenkhachhang">
+						<span>Họ tên</span>
+					</th>
+					<th md-column md-order-by="taikhoan">
+						<span>Tài khoản</span>
+					</th>
+					<th md-column>
+						<span>Mật khẩu</span>
+					</th>
+				</tr>
+			</thead>
+			<tbody md-body>
+				<tr md-row ng-repeat="cus in vm.customers">
+					<td md-cell class="margin-5">
+						<img ng-src="{{cus.hinhanh}}" class="size-image-table">
+					</td>
+					<td md-cell>{{cus.hoten}}</td>
+					<td md-cell>{{cus.taikhoan}}</td>
+					<td md-cell>
+						<md-button ng-if="cus.matkhau" class="md-primary" ng-click="vm.showthaydoimatkhau(cus)">
+							Thay đổi mật khẩu
+						</md-button>
+						<md-button ng-if="!cus.matkhau" class="md-primary" ng-click="vm.showtaomatkhau(cus)">
+							Tạo tài khoản
+						</md-button>
+						<!--<button ng-if="cus.matkhau" ng-click="showAdvanced()">Thay đổi mật khẩu</button>
+						<button ng-if="!cus.matkhau" ng-click="">Tạo tài khoản</button>-->
+						<!--<md-button  class="md-fab md-mini md-primary md-hue-2" aria-label="Profile" ng-click="vm.modelDetail(cus._id)">
+                           <md-icon md-svg-icon="images/pencil-edit.svg"></md-icon>
+                        </md-button>
+						<md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Profile" ng-click="vm.showConfirm($event, cus._id)">
+                           <md-icon md-svg-icon="images/delete.svg"></md-icon>
+                        </md-button>-->
+					</td>
+					<!--<td md-cell> kh1@gmail.com</td>-->
+					<!--<td md-cell>{{row.hoten}}</td>
+                    <td md-cell>{{row.sodt}}</td>
+                    <td md-cell>{{row.diachi}}</td>
+                    <td md-cell> {{row.email}}</td>-->
+					<!--<td md-cell layout="row">
+						<md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Profile" ng-click="vm.modelDetail(row.cmnd)">
+                           <md-icon md-svg-icon="images/pencil-edit.svg"></md-icon>
+                        </md-button>
+						<md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Profile" ng-click="vm.showConfirm($event, row.cmnd)">
+                           <md-icon md-svg-icon="images/delete.svg"></md-icon>
+                        </md-button> 
+                    </td>-->
+				</tr>
+			</tbody>
+		</table>
+	</md-table-container>
+</div>
